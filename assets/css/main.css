@@ -1,0 +1,399 @@
+/* ==============================
+   BASE RESET & VARIABLES
+================================ */
+:root {
+    --primary: #0a7d44;      /* CRDB green */
+    --primary-dark: #065c31;
+    --accent: #2563eb;
+    --bg: #f4f7fa;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ==============================
+   APP LAYOUT
+================================ */
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==============================
+   SIDEBAR
+================================ */
+.sidebar {
+    width: 240px;
+    background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .logo {
+    width: 120px;
+    margin: 0 auto 1rem;
+}
+
+.sidebar h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 0.4rem;
+    display: block;
+    transition: background 0.2s ease;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.sidebar .logout {
+    margin-top: auto;
+    background: rgba(0,0,0,0.2);
+}
+
+.sidebar button {
+    margin-top: 1rem;
+    padding: 0.6rem;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    cursor: pointer;
+}
+
+/* ==============================
+   MAIN CONTENT
+================================ */
+.main {
+    flex: 1;
+    padding: 2rem;
+}
+
+/* ==============================
+   WELCOME CARD
+================================ */
+.welcome-card {
+    background: linear-gradient(135deg, #e6f4ea, #d1fae5);
+    padding: 1.8rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+}
+
+.welcome-card h2 {
+    margin: 0 0 0.4rem;
+    font-weight: 600;
+}
+
+.welcome-card p {
+    margin: 0.2rem 0;
+    color: #065f46;
+}
+
+/* ==============================
+   BALANCE CARD
+================================ */
+.balance-card {
+    background: var(--card);
+    padding: 1.6rem;
+    border-radius: var(--radius);
+    max-width: 340px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    margin-bottom: 2rem;
+}
+
+.balance-card h4 {
+    margin: 0;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.balance-card h1 {
+    margin-top: 0.6rem;
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+/* ==============================
+   ACTION BUTTONS (Deposit / Withdraw / Transfer)
+================================ */
+.actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.actions a {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    padding: 0.9rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.actions a:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   TRANSACTION FILTER
+================================ */
+.filter {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.filter select,
+.filter button {
+    padding: 0.55rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+/* ==============================
+   TRANSACTION TABLE (FIXED OVERFLOW)
+================================ */
+.table-container {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.9rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background: #f9fafb;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+tr:hover td {
+    background: #f3f4f6;
+}
+
+/* Amount colors */
+.amount-in {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.amount-out {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* ==============================
+   FORMS (Deposit / Withdraw / Transfer)
+================================ */
+.form-card {
+    background: var(--card);
+    max-width: 420px;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+}
+
+.field {
+    margin-bottom: 1.2rem;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.field input {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+button.primary {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* ==============================
+   DARK MODE
+================================ */
+body.dark {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+body.dark .main,
+body.dark .balance-card,
+body.dark .table-container,
+body.dark .form-card {
+    background: #1e293b;
+}
+
+body.dark th {
+    background: #334155;
+}
+
+body.dark tr:hover td {
+    background: #334155;
+}
+/* ==============================
+   AUTH PAGES (LOGIN / REGISTER)
+================================ */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.auth-card {
+    background: var(--card);
+    width: 100%;
+    max-width: 420px;
+    padding: 2.2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.auth-logo {
+    width: 90px;
+    margin-bottom: 1rem;
+}
+
+.auth-card h2 {
+    margin: 0.5rem 0 0.3rem;
+    font-weight: 600;
+}
+
+.auth-subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.auth-footer {
+    margin-top: 1.4rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.auth-footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.error-box {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 0.6rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+/* ==============================
+   INDEX PAGE BUTTONS
+================================ */
+
+.index-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1.8rem 0;
+}
+
+.primary-btn {
+    display: block;
+    text-align: center;
+    padding: 0.9rem;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.primary-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.secondary-btn {
+    display: block;
+    text-align: center;
+    padding: 0.9rem;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Style the login logo */
+.login-logo {
+    display: block;        /* Center the image */
+    margin: 0 auto 20px;   /* Space below the logo */
+    width: 120px;          /* Adjust width as needed */
+    height: auto;          /* Maintain aspect ratio */
+}

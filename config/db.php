@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "online_banking";
+$database = "crdb_bank";
 
 // Connect to MySQL
 $conn = mysqli_connect($host, $user, $password, $database);
