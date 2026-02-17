@@ -62,7 +62,7 @@ if(isset($_POST['login'])){
 
         <p class="auth-footer">
             Don’t have an account?
-            <a href="register.php"><strong>Create one</strong></a>
+            <a href="register.php">Create one</a>
         </p>
 
     </div>
